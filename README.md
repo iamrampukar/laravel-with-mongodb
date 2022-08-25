@@ -59,3 +59,60 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+##*****************LARAVEL WITH MONGODB********************************
+
+## Requirement:
+PHP: 7.4.9
+Larvel: 8.X
+mongoDB: 5.0.11
+PECL
+	1. https://www.php.net/manual/en/set.mongodb.php
+	2. https://www.php.net/manual/en/mongodb.installation.php
+	3. https://www.php.net/manual/en/mongodb.installation.windows.php
+	4. https://pecl.php.net/package/mongodb
+		mongodb-1.12.1.tgz (1361.3kB)  DLL
+		NOTe: Click "DLL" icon 
+	5. https://pecl.php.net/package/mongodb/1.12.1/windows
+		7.4 Thread Safe (TS) x64 
+		NOTE: Check your "G:\wamp_server_64\bin\php\php7.4.9\php7ts.dll" (TS- Thread Safe)
+	6. "php_mongodb.dll" File paste inside "G:\wamp_server_64\bin\php\php7.4.9\ext" Folder.
+	7. Add Extension "extension=mongodb" inside php.ini file "\bin\php\php7.4.9\php.ini"
+		extension=mongodb
+		or
+		extension="mongodb.so"
+		or
+		extension=php_mongodb.dll
+## Install MangoDB Package:
+-- URL: https://github.com/jenssegers/laravel-mongodb
+-- composer require jenssegers/mongodb 3.8 OR composer require jenssegers/mongodb
+## Config Database Docs:
+-- URL: https://github.com/jenssegers/laravel-mongodb
+## config/app.php
+-- Jenssegers\Mongodb\MongodbServiceProvider::class, // NO NEEDED Latest version larave project.
+## config/database.php
+'mongodb' => [
+	'driver' => 'mongodb',
+	'host' => env('DB_HOST', '127.0.0.1'),
+	'port' => env('DB_PORT', 27017),
+	'database' => env('DB_DATABASE', 'homestead'),
+	'username' => env('DB_USERNAME', 'homestead'),
+	'password' => env('DB_PASSWORD', 'secret'),
+	'options' => [
+		// here you can pass more settings to the Mongo Driver Manager
+		// see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
+		'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // required with Mongo 3+
+	],
+],
+## .env
+#DB_CONNECTION=mysql
+DB_CONNECTION=mongodb
+DB_HOST=127.0.0.1
+#DB_PORT=3306
+DB_PORT=27017
+DB_DATABASE=ec_mi_db
+DB_USERNAME=
+DB_PASSWORD=
+
+## CREATE VIRTUAL HOST:
+http://laravel-with-mongodb.local.com
