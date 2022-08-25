@@ -60,9 +60,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-##*****************LARAVEL WITH MONGODB********************************
+## Laravel With MongoDB
 
-## Requirement:
+### Requirement:
 PHP: 7.4.9
 Larvel: 8.X
 mongoDB: 5.0.11
@@ -83,14 +83,14 @@ PECL
 		extension="mongodb.so"
 		or
 		extension=php_mongodb.dll
-## Install MangoDB Package:
+### Install MangoDB Package:
 -- URL: https://github.com/jenssegers/laravel-mongodb
 -- composer require jenssegers/mongodb 3.8 OR composer require jenssegers/mongodb
-## Config Database Docs:
+### Config Database Docs:
 -- URL: https://github.com/jenssegers/laravel-mongodb
-## config/app.php
+### config/app.php
 -- Jenssegers\Mongodb\MongodbServiceProvider::class, // NO NEEDED Latest version larave project.
-## config/database.php
+### config/database.php
 'mongodb' => [
 	'driver' => 'mongodb',
 	'host' => env('DB_HOST', '127.0.0.1'),
@@ -116,3 +116,61 @@ DB_PASSWORD=
 
 ## CREATE VIRTUAL HOST:
 http://laravel-with-mongodb.local.com
+
+
+## Resouce:
+-- https://www.youtube.com/watch?v=XGV1FstO6B0&ab_channel=Kritika%26Pranav%7CProgrammerCouple
+-- https://www.mongodb.com/developer/products/mongodb/mongodb-schema-design-best-practices/
+-- http://mongodb.github.io/node-mongodb-native/schema/chapter10/
+
+## MongoDB EC Schema
+-- https://www.infoq.com/articles/data-model-mongodb/
+-- https://fabric.inc/blog/mongodb-ecommerce/#:~:text=MongoDB%20is%20a%20NoSQL%20database,data%20models%20and%20dynamic%20queries.
+-- **** https://hackernoon.com/building-a-mongodb-nosql-e-commerce-data-model-fn8135bc
+-- https://ali-atwa.medium.com/mongodb-and-e-commerce-ce7a6ca79bcb
+
+
+
+## MongoDB EC Schema Design
+	products:
+	{
+		"name": "Harry Potter",
+		"author": "J.K. Rolling",
+		"skus": [
+			{
+				"sku": "HPH",
+				"price": 29.99,
+				"quantity": 100,
+				"feature": "hard cover"
+
+			},
+			{
+				"sku": "HPH",
+				"price": 19.99,
+				"quantity": 200,
+				"feature": "paperback"
+
+			}
+		]
+	}
+
+	users:
+	{
+		_id: customer@gmail.com,
+		first_name: Ram
+		last_name: Pukar
+		hashed_password: "212345tyh"
+		address: {
+			country: Canada,
+			street1: Test Application
+			street2: Test Application
+			city: Montreat,
+			province: Quebec
+			zip: 52222
+		}
+
+	}
+
+
+
+
