@@ -14,7 +14,10 @@ class CreateFlightsTable extends Migration
     public function up()
     {
         Schema::create('flights', function (Blueprint $table) {
-            $table->id();
+            $table->string('full_name');
+            $table->string('flight_name');
+            $table->string('email')->unique();
+            $table->integer('age');
             $table->timestamps();
         });
     }
