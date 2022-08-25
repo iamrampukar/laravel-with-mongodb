@@ -15,7 +15,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        $flightModel = Flight::get();
+        return view('flight.index',compact('flightModel'));
     }
 
     /**
@@ -25,7 +26,7 @@ class FlightController extends Controller
      */
     public function create()
     {
-        //
+        return view('flight.create');
     }
 
     /**
@@ -36,7 +37,9 @@ class FlightController extends Controller
      */
     public function store(StoreFlightRequest $request)
     {
-        //
+        $postData       = $request->validated();
+        $flightModel    = Flight::create($postData);
+        return redirect()->back();
     }
 
     /**
@@ -47,7 +50,7 @@ class FlightController extends Controller
      */
     public function show(Flight $flight)
     {
-        //
+        return view('flight.show',compact('flight'));
     }
 
     /**
@@ -58,7 +61,7 @@ class FlightController extends Controller
      */
     public function edit(Flight $flight)
     {
-        //
+        return view('flight.edit',compact('flight'));
     }
 
     /**
@@ -70,7 +73,9 @@ class FlightController extends Controller
      */
     public function update(UpdateFlightRequest $request, Flight $flight)
     {
-        //
+        $postData       = $request->validated();
+        $flight->update($postData);
+        return redirect()->route('flight.index');
     }
 
     /**
@@ -81,6 +86,7 @@ class FlightController extends Controller
      */
     public function destroy(Flight $flight)
     {
-        //
+        $flight->delete();
+        return redirect()->route('flight.index');
     }
 }

@@ -13,7 +13,7 @@ class UpdateFlightRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateFlightRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "full_name"     => ['required'],
+            "flight_name"   => ['required'],
+            "email"         => ['required'],
+            "age"           => ['required'],
         ];
     }
 }
